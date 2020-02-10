@@ -1,0 +1,7 @@
+{
+  "Style": {
+    "Selected": ["on_yellow", "black"],
+    "Query": ["yellow", "bold"],
+    "Matched": ["red"]
+  }
+}
