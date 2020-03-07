@@ -93,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias
+alias t='tig'
 alias be='bundle exec'
 alias bi='bundle install'
 alias bu='bundle update'
