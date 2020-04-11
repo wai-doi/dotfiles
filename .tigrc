@@ -1,0 +1,23 @@
+set main-view = id date:relative author commit-title:graph=yes,refs=yes
+set blame-view = date:relative author line-number:yes,interval=1 text
+set line-graphics = utf-8
+set diff-options = -m --first-parent
+
+color diff-header black white
+color id yellow default
+color cursor white magenta bold
+
+bind status + !git commit --amend --allow-empty
+bind diff F ?!git commit --fixup %(commit)
+bind diff S ?!git commit --squash %(commit)
+bind main F ?!git commit --fixup %(commit)
+bind main S ?!git commit --squash %(commit)
+bind blob B @hub browse -- tree/%(commit)/%(file)
+bind diff B @hub browse -- commit/%(commit)
+bind tree B @hub browse -- tree/%(commit)/%(directory)
+bind diff <Ctrl-n> :/^@@
+bind diff <Ctrl-p> :?^@@
+bind log <Ctrl-n> :/^commit
+bind log <Ctrl-p> :?^commit
+bind stage <Ctrl-n> :/^@@
+bind stage <Ctrl-p> :?^@@
