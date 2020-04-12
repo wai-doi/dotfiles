@@ -4,3 +4,12 @@ When you add new dotfiles in this repository, execute `./setup.sh` to create Syb
 ```
 % ./setup.sh
 ```
+
+### homebrew
+```
+# install
+% brew bundle --no-lock
+
+# dump
+% brew bundle dump -f
+```
