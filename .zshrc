@@ -93,7 +93,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias
-alias rm='gomi'
 alias t='tig'
 alias be='bundle exec'
 alias bi='bundle install'
