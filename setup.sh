@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DOTPATH=~/dotfiles
+DOTPATH=${PWD}
 for f in .??*
 do
     [ "$f" = ".git" ] && continue
