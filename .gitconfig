@@ -37,3 +37,5 @@
 	autosquash = true
 [ghq]
 	root = ~/src
+[push]
+	default = current
