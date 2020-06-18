@@ -151,6 +151,10 @@ function ghqgem() {
     fi
 }
 
+function rgl() {
+    rg -p "$@" | less -RK
+}
+
 eval "$(starship init zsh)"
 
 source ~/.iterm2_shell_integration.zsh
