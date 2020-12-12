@@ -93,11 +93,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias
+alias vs='code .'
 alias t='tig'
 alias be='bundle exec'
 alias bi='bundle install'
 alias bu='bundle update'
 alias cb='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
+alias repo='gh repo view --web'
 
 # rbenv PATH
 
