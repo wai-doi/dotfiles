@@ -101,7 +101,6 @@ alias bi='bundle install'
 alias bu='bundle update'
 alias cb='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias repo='gh repo view --web'
-alias preq='gh pr view --web  || gh pr create --web'
 
 # rbenv PATH
 
@@ -157,6 +156,14 @@ function ghqgem() {
 
 function rgl() {
     rg -p "$@" | less -RK
+}
+
+function pro() {
+    if [ -n "$1" ]; then
+        gh pr view $1 --web
+    else
+        gh pr view --web  || gh pr create --web
+    fi
 }
 
 function prl() {
