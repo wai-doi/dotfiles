@@ -93,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias
+alias reload='source ~/.zshrc'
 alias vs='code .'
 alias t='tig'
 alias be='bundle exec'
