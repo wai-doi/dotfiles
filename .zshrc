@@ -159,6 +159,14 @@ function rgl() {
     rg -p "$@" | less -RK
 }
 
+function prl() {
+    pr_num=$(gh pr list -s all "$@" | peco | cut -f 1)
+
+    if [ -n "$pr_num" ]; then
+        gh pr view $pr_num --web
+    fi
+}
+
 eval "$(starship init zsh)"
 
 source ~/.iterm2_shell_integration.zsh
