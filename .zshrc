@@ -174,6 +174,14 @@ function prl() {
     fi
 }
 
+function cbpr() {
+    branch_name=$(gh pr list -s all "$@" | peco | cut -f 3)
+
+    if [ -n "$branch_name" ]; then
+        git checkout $branch_name
+    fi
+}
+
 eval "$(starship init zsh)"
 
 source ~/.iterm2_shell_integration.zsh
