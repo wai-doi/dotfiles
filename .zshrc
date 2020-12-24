@@ -96,6 +96,7 @@ source $ZSH/oh-my-zsh.sh
 alias reload='source ~/.zshrc'
 alias vs='code .'
 alias t='tig'
+alias ta='tig --all'
 alias be='bundle exec'
 alias bi='bundle install'
 alias bu='bundle update'
