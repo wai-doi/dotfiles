@@ -21,3 +21,5 @@ bind log <Ctrl-n> :/^commit
 bind log <Ctrl-p> :?^commit
 bind stage <Ctrl-n> :/^@@
 bind stage <Ctrl-p> :?^@@
+bind main R !git rebase -i %(commit)
+bind diff R !git rebase -i %(commit)
