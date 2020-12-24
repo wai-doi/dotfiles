@@ -176,10 +176,10 @@ function prl() {
 }
 
 function cbpr() {
-    branch_name=$(gh pr list -s all "$@" | peco | cut -f 3)
+    pr_num=$(gh pr list -s all "$@" | peco | cut -f 1)
 
-    if [ -n "$branch_name" ]; then
-        git checkout $branch_name
+    if [ -n "$pr_num" ]; then
+        gh pr checkout $pr_num
     fi
 }
 
