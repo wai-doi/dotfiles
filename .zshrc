@@ -25,6 +25,7 @@ zplug load
 
 
 # load
+setopt no_beep
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 source ~/.iterm2_shell_integration.zsh
