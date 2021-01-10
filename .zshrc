@@ -24,8 +24,15 @@ fi
 zplug load
 
 
-# load
+# setopt
 setopt no_beep
+setopt share_history
+setopt hist_reduce_blanks
+setopt list_packed
+setopt list_types
+
+
+# load
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 source ~/.iterm2_shell_integration.zsh
