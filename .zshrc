@@ -30,6 +30,7 @@ setopt share_history
 setopt hist_reduce_blanks
 setopt list_packed
 setopt list_types
+setopt globdots
 
 
 # load
