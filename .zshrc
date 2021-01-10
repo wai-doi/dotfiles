@@ -22,6 +22,18 @@ fi
 
 zplug load
 
+
+# load
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+source ~/.iterm2_shell_integration.zsh
+
+## rbenv PATH
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+
 # alias
 alias reload='source ~/.zshrc'
 alias vs='code .'
@@ -33,17 +45,8 @@ alias bu='bundle update'
 alias cb='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias repo='gh repo view --web'
 
-# rbenv PATH
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-eval "$(direnv hook zsh)"
-
-
-# peco
-
+# function
 function peco-select-history() {
     # historyを番号なし、逆順、最初から表示。
     # 順番を保持して重複を削除。
@@ -56,7 +59,6 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^R' peco-select-history
 
-# ghq
 function cr() {
     if [ $# -eq 1 ]; then
         repo=$(ghq list -p | peco --query $1)
@@ -112,7 +114,3 @@ function cbpr() {
         gh pr checkout $pr_num
     fi
 }
-
-eval "$(starship init zsh)"
-
-source ~/.iterm2_shell_integration.zsh
