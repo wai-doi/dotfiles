@@ -52,6 +52,7 @@ alias ta='tig --all'
 alias be='bundle exec'
 alias bi='bundle install'
 alias bu='bundle update'
+alias bo='EDITOR=code bundle open'
 alias cb='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias repo='gh repo view --web'
 
