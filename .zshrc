@@ -46,6 +46,7 @@ eval "$(rbenv init -)"
 
 # alias
 alias reload='source ~/.zshrc'
+alias home='cd ~'
 alias vs='code .'
 alias t='tig'
 alias ta='tig --all'
