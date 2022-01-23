@@ -1,3 +1,6 @@
+export HISTSIZE=100000
+export SAVEHIST=100000
+
 # zplug
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
