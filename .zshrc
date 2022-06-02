@@ -65,6 +65,7 @@ alias repo='gh repo view --web'
 
 
 # function
+# pecoで履歴を検索
 function peco-select-history() {
     # historyを番号なし、逆順、最初から表示。
     # 順番を保持して重複を削除。
@@ -77,6 +78,7 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^R' peco-select-history
 
+# リポジトリに移動する
 function cr() {
     if [ $# -eq 1 ]; then
         repo=$(ghq list -p | peco --query $1)
@@ -109,6 +111,7 @@ function rgl() {
     rg -p "$@" | less -RK
 }
 
+# カレントブランチでPRを開く
 function pro() {
     if [ -n "$1" ]; then
         gh pr view $1 --web
@@ -125,6 +128,7 @@ function prl() {
     fi
 }
 
+# PR一覧からブランチをチェックアウトする
 function cbpr() {
     pr_num=$(gh pr list -s all "$@" | peco | cut -f 1)
 
