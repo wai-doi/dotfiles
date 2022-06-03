@@ -140,3 +140,11 @@ function cbpr() {
         gh pr checkout $pr_num
     fi
 }
+
+function review() {
+    pr_num=$(gh pr list --search "user-review-requested:@me" | peco | awk '{print $1}')
+
+    if [ -n "$pr_num" ]; then
+        gh pr checkout $pr_num
+    fi
+}
