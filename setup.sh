@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IGNORE_PATTERN="^\.(git|config)"
+IGNORE_PATTERN="^\.(git|config)$"
 
 echo "Create dotfile links."
 
