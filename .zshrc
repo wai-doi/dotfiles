@@ -1,5 +1,5 @@
 export HISTSIZE=100000
-export SAVEHIST=100000
+export SAVEHIST=1000000
 
 # zplug
 export ZPLUG_HOME=/usr/local/opt/zplug
