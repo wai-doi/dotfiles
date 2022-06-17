@@ -66,6 +66,7 @@ alias bp='bundle pristine'
 alias cb='git checkout `git branch --sort=-authordate | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias cob="git --no-pager reflog | awk '\$3 == \"checkout:\" && /moving from/ {print \$8}' | awk '!a[\$0]++' | head -n 100 | peco | pbcopy"
 alias repo='gh repo view --web'
+alias ali='alias | peco | sed -e "s/=.*$//"'
 
 
 # function
