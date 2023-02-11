@@ -2,6 +2,9 @@ export HISTSIZE=100000
 export SAVEHIST=1000000
 
 # zplug
+
+# 事前に `brew install zplug` の実行が必要
+# zplug の README には `source ~/.zplug/init.zsh` と書いてるが Homebrew の場合は以下でよい。
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
