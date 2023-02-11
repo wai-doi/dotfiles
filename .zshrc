@@ -47,9 +47,7 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 source ~/.iterm2_shell_integration.zsh
 
-## rbenv PATH
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
+## rbenv
 eval "$(rbenv init -)"
 
 ## nodenv
