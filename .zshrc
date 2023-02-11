@@ -14,8 +14,6 @@ zplug "zsh-users/zsh-completions"
 zplug "chrissicool/zsh-256color"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "Aloxaf/fzf-tab"
-
-zplug "ohmyzsh/ohmyzsh", use:"lib/*.zsh"
 zplug "plugins/git", from:oh-my-zsh
 
 if ! zplug check --verbose; then
