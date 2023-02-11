@@ -125,6 +125,7 @@ function pro() {
     fi
 }
 
+# PR一覧から指定したPRをブラウザで開く
 function prl() {
     pr_num=$(gh pr list -s all "$@" | peco | cut -f 1)
 
@@ -142,6 +143,7 @@ function cbpr() {
     fi
 }
 
+# 自分が reviewer になっているPR一覧からブランチをチェックアウトする
 function review() {
     pr_num=$(gh pr list --search "user-review-requested:@me" | peco | awk '{print $1}')
 
