@@ -14,7 +14,6 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "chrissicool/zsh-256color"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "Aloxaf/fzf-tab"
 zplug "plugins/git", from:oh-my-zsh
