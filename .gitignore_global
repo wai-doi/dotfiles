@@ -1,4 +1,12 @@
+# VSCode の設定などで生成されるため
 .vscode/
-.sandbox/
+
+# VSCode 拡張機能 CodeTour を使ったときに生成されるディレクトリのため
+# https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour
 .tours/
+
+# メモなどプライベートなファイルをリポジトリに置くディレクトリのため
+.sandbox/
+
+# リポジトリ内だけの .irbrc をカスタマイズする場合のため
 .irbrc
