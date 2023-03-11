@@ -158,3 +158,7 @@ function review() {
         gh pr checkout $pr_num
     fi
 }
+
+# g++でコンパイルエラーになったため、それ回避するための設定。
+# 参考: https://qiita.com/ikoanymg/items/b108e97093b50662673d
+export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
