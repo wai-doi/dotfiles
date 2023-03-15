@@ -1,3 +1,6 @@
+# `edit` command opens files in your editor
+ENV['EDITOR'] = 'code'
+
 IRB.conf[:INSPECT_MODE] = :pp
 IRB.conf[:USE_AUTOCOMPLETE] = false
 
