@@ -62,6 +62,7 @@ eval "$(nodenv init -)"
 # alias
 alias reload='source ~/.zshrc'
 alias home='cd ~'
+alias ll='ls -la --color=auto'
 alias vs='code .'
 alias t='tig'
 alias ta='tig --all'
