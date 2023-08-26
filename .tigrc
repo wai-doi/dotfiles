@@ -2,6 +2,7 @@ set main-view = id date:relative author commit-title:graph=yes,refs=yes
 set blame-view = date:relative author line-number:yes,interval=1 text
 set line-graphics = utf-8
 set diff-options = -m --first-parent
+set wrap-lines = yes
 
 color diff-header black white
 color id yellow default
