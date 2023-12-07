@@ -2,6 +2,7 @@
 ENV['EDITOR'] = 'code'
 
 IRB.conf[:INSPECT_MODE] = :pp
+IRB.conf[:COMPLETOR] = :type
 
 if Gem::Version.new(Reline::VERSION) >= Gem::Version.new('0.4.0')
   Reline::Face.config(:completion_dialog) do |conf|
