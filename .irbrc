@@ -18,7 +18,7 @@ else
   IRB.conf[:USE_AUTOCOMPLETE] = false
 end
 
-puts "Ruby v#{RUBY_VERSION}"
+puts RUBY_DESCRIPTION
 
 if Gem::Version.new(IRB::VERSION) >= Gem::Version.new('1.6')
   puts "The `\e[36mshow_cmds\e[0m` command prints all available IRB commands."
