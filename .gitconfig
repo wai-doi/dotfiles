@@ -34,7 +34,7 @@
 	excludesfile = ~/.gitignore_global
 	commentChar = ";"
 [rebase]
-  autostash = true
+	autostash = true
 	autosquash = true
 [ghq]
 	root = ~/src
