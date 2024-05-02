@@ -29,3 +29,14 @@ require 'date'
 require 'json'
 require 'time'
 require 'yaml'
+
+# === Rails ===
+
+if defined? Rails::Console
+  class ActiveRecord::Relation < Object
+    def pp_sql
+      # https://www.npmjs.com/package/sql-formatter
+      system("echo '#{to_sql}' | sql-formatter")
+    end
+  end
+end
