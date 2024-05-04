@@ -1,6 +1,7 @@
 # `edit` command opens files in your editor
 ENV['EDITOR'] = 'code'
 
+IRB.conf[:SAVE_HISTORY] = 10000
 IRB.conf[:INSPECT_MODE] = :pp
 IRB.conf[:COMPLETOR] = :type
 
