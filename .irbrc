@@ -40,9 +40,9 @@ if Gem::Version.new(IRB::VERSION) >= Gem::Version.new('1.13')
 
     def execute(args)
       # https://github.com/peco/peco
-      c = `peco ~/.irb_history`
-      puts c
-      eval(c.chomp)
+      code = `tail -r ~/.irb_history | cat -n | sort -uk2 | sort -n | cut -f2- | peco`
+      puts code
+      eval(code.chomp)
     end
   end
 
