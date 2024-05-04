@@ -31,6 +31,24 @@ require 'json'
 require 'time'
 require 'yaml'
 
+# === Command ===
+
+if Gem::Version.new(IRB::VERSION) >= Gem::Version.new('1.13')
+  class HistoryWithPeco < IRB::Command::Base
+    category 'My Command'
+    description 'incremental search history with peco'
+
+    def execute(args)
+      # https://github.com/peco/peco
+      c = `peco ~/.irb_history`
+      puts c
+      eval(c.chomp)
+    end
+  end
+
+  IRB::Command.register(:his, HistoryWithPeco)
+end
+
 # === Rails ===
 
 if defined? Rails::Console
