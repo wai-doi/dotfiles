@@ -13,3 +13,8 @@
 
 # リポジトリ内だけの .irbrc をカスタマイズする場合のため
 .irbrc
+
+# プロジェクトのGemfileに含めたくないGemがあるときに使う
+# https://qiita.com/vzvu3k6k/items/12aff810ea93c7c6f307
+Gemfile.local
+Gemfile.local.lock

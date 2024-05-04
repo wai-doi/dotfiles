@@ -83,6 +83,9 @@ alias bi='bundle install'
 alias bu='bundle update'
 alias bo='EDITOR=code bundle open'
 alias bp='bundle pristine'
+# https://qiita.com/vzvu3k6k/items/12aff810ea93c7c6f307
+alias bel='BUNDLE_GEMFILE=Gemfile.local be'
+alias bei='bundle && BUNDLE_GEMFILE=Gemfile.local bundle'
 alias cb='git checkout `git branch --format="%(align:width=70)%(refname:short)%(end) %(objectname:short) %(align:width=15,position=right)%(committerdate:relative)%(end) %(align:width=20)%(authorname)%(end) %(subject)" --sort=-committerdate | peco | awk "{print \\$1}"`'
 alias ct='git checkout `git tag --format="%(align:width=70)%(refname:short)%(end) %(objectname:short) %(align:width=15,position=right)%(committerdate:relative)%(end) %(align:width=20)%(authorname)%(end) %(subject)" --sort=-committerdate | peco | awk "{print \\$1}"`'
 alias cob="git --no-pager reflog | awk '\$3 == \"checkout:\" && /moving from/ {print \$8}' | awk '!a[\$0]++' | head -n 100 | peco | pbcopy"
