@@ -31,22 +31,18 @@ require 'json'
 require 'time'
 require 'yaml'
 
-# === Command ===
+# === Reline ===
 
-if Gem::Version.new(IRB::VERSION) >= Gem::Version.new('1.13')
-  class HistoryWithPeco < IRB::Command::Base
-    category 'My Command'
-    description 'incremental search history with peco'
-
-    def execute(args)
-      # https://github.com/peco/peco
-      code = `tail -r ~/.irb_history | cat -n | sort -uk2 | sort -n | cut -f2- | peco`
-      puts code
-      eval(code.chomp)
-    end
+class Reline::LineEditor
+  private def incremental_search_history(_key)
+    # Monkey Patch Ctrl-R
+    # https://github.com/peco/peco
+    code = IO.popen('peco', 'r+') { |io|
+      io.puts Reline::HISTORY.reverse.uniq
+      io.gets
+    }
+    @buffer_of_lines = code ? code.split("\n") : ['']
   end
-
-  IRB::Command.register(:his, HistoryWithPeco)
 end
 
 # === Rails ===
