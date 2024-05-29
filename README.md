@@ -13,3 +13,11 @@ When you add new dotfiles in this repository, execute `./setup.sh` to create Syb
 # dump
 % brew bundle dump -f
 ```
+
+### gem-src
+
+Install [gem-src](https://github.com/amatsuda/gem-src)
+
+```
+% git clone https://github.com/amatsuda/gem-src.git "$(rbenv root)/plugins/gem-src"
+```
