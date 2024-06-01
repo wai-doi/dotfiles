@@ -5,7 +5,7 @@ export SAVEHIST=1000000
 
 # 事前に `brew install zplug` の実行が必要
 # zplug の README には `source ~/.zplug/init.zsh` と書いてるが Homebrew の場合は以下でよい。
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=$HOMEBREW_PREFIX/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
