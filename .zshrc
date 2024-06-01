@@ -47,10 +47,6 @@ setopt globdots
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
-# iTerm2 Shell Integration
-# https://iterm2.com/documentation-shell-integration.html
-# 過去のマークはCmd-Shift-Up/Downで行き来できる。
-source ~/.iterm2_shell_integration.zsh
 
 ## rbenv
 eval "$(rbenv init -)"
