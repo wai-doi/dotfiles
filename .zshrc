@@ -88,6 +88,9 @@ alias cob="git --no-pager reflog | awk '\$3 == \"checkout:\" && /moving from/ {p
 alias repo='gh repo view --web'
 alias ali='alias | peco | sed -e "s/=.*$//"'
 
+# https://github.com/babarot/gomi
+alias rm='gomi'
+
 
 # function
 # pecoで履歴を検索
