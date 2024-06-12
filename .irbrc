@@ -42,6 +42,7 @@ class Reline::LineEditor
       io.gets
     }
     @buffer_of_lines = code ? code.split("\n") : ['']
+    @byte_pointer = current_line.bytesize
   end
 end
 
