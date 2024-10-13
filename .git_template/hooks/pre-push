@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$(git rev-parse --abbrev-ref HEAD | grep '^wip')" ]; then
     echo "\033[0;31m[ABORT] You cannot push a branch whose prefix is \`wip\`.\033[0;39m" 1>&2
@@ -8,6 +8,20 @@ fi
 if [ "$(git log --oneline master..head | grep 'fixup! ')" ]; then
     echo "\033[0;31m[ABORT] You cannot push a commit whose title starts \`fixup! \`.\033[0;39m" 1>&2
     exit 1
+fi
+
+# Executes any command specified in the command variable during a push.
+command=""
+if [ -n "$command" ]; then
+    read -r -p "Do you want to execute \"${command}\" ? [y/N]: " input < /dev/tty
+    case $input in
+        [Yy]*)
+        if ! eval "$command"; then
+            echo "Error: git push aborted !"
+            exit 1
+        fi
+        ;;
+    esac
 fi
 
 exit 0
