@@ -17,6 +17,8 @@ zplug "zsh-users/zsh-completions"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "Aloxaf/fzf-tab"
 zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
