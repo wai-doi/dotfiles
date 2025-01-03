@@ -21,10 +21,6 @@ end
 
 puts RUBY_DESCRIPTION
 
-if Gem::Version.new(IRB::VERSION) >= Gem::Version.new('1.6')
-  puts "The `\e[36mshow_cmds\e[0m` command prints all available IRB commands."
-end
-
 require 'csv'
 require 'date'
 require 'json'
