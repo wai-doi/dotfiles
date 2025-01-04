@@ -68,6 +68,9 @@ export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
 export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
 export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 
+## bat
+export BAT_THEME='Monokai Extended'
+
 
 # alias
 alias reload='source ~/.zshrc'
@@ -89,6 +92,7 @@ alias ct='git checkout `git tag --format="%(align:width=70)%(refname:short)%(end
 alias cob="git --no-pager reflog | awk '\$3 == \"checkout:\" && /moving from/ {print \$8}' | awk '!a[\$0]++' | head -n 100 | peco | pbcopy"
 alias repo='gh repo view --web'
 alias ali='alias | peco | sed -e "s/=.*$//"'
+alias cat='bat -p'
 
 # https://github.com/babarot/gomi
 alias rm='gomi'
