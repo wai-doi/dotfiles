@@ -1,19 +1,28 @@
-#!/bin/sh
+#!/bin/bash
 
-IGNORE_PATTERN="^\.(git|config)$"
+ln_with_mkdir() {
+  target="$HOME/$1"
+  mkdir -p "$(dirname "$target")"
+  ln -snfv "$PWD/$1" "$target"
+}
 
-echo "Create dotfile links."
+dotfiles=(
+  ".bundle/config"
+  ".config/starship.toml"
+  ".git_template/hooks/pre-push"
+  ".peco/config.json"
+  ".gemrc"
+  ".gitconfig"
+  ".gitignore_global"
+  ".irbrc"
+  ".pryrc"
+  ".tigrc"
+  ".vimrc"
+  ".zshrc"
+)
 
-for dotfile in .??*; do
-    [[ $dotfile =~ $IGNORE_PATTERN ]] && continue
-    ln -snfv "$(pwd)/$dotfile" "$HOME/$dotfile"
+for file in "${dotfiles[@]}"; do
+  ln_with_mkdir "$file"
 done
 
-# create .config in $HOME
-mkdir -p $HOME/.config
-for dotfile in "$(ls .config)"; do
-    [[ $dotfile =~ $IGNORE_PATTERN ]] && continue
-    ln -snfv "$(pwd)/.config/$dotfile" "$HOME/.config/$dotfile"
-done
-
-echo "Success"
+echo "Dotfiles setup complete!"
