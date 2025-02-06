@@ -3,6 +3,7 @@ ENV['EDITOR'] = 'code'
 
 IRB.conf[:SAVE_HISTORY] = 10000
 IRB.conf[:INSPECT_MODE] = :pp
+IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:COMPLETOR] = :type
 
 if Gem::Version.new(Reline::VERSION) >= Gem::Version.new('0.4.0')
