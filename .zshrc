@@ -94,9 +94,6 @@ alias repo='gh repo view --web'
 alias ali='alias | peco | sed -e "s/=.*$//"'
 alias cat='bat -p'
 
-# https://github.com/babarot/gomi
-alias rm='gomi'
-
 
 # function
 # pecoで履歴を検索
