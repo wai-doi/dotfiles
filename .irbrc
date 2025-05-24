@@ -20,8 +20,6 @@ else
   IRB.conf[:USE_AUTOCOMPLETE] = false
 end
 
-puts RUBY_DESCRIPTION
-
 require 'csv'
 require 'date'
 require 'json'
@@ -53,3 +51,5 @@ if defined? Rails::Console
     end
   end
 end
+
+puts RUBY_DESCRIPTION
