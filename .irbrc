@@ -20,11 +20,16 @@ else
   IRB.conf[:USE_AUTOCOMPLETE] = false
 end
 
-require 'csv'
-require 'date'
-require 'json'
-require 'time'
-require 'yaml'
+def safe_require(lib_name)
+  require lib_name
+rescue LoadError
+end
+
+safe_require 'csv'
+safe_require 'date'
+safe_require 'json'
+safe_require 'time'
+safe_require 'yaml'
 
 # === Reline ===
 
