@@ -1,0 +1,23 @@
+# Theme
+theme = Monokai Soda
+
+# Font
+font-family = FiraCode Nerd Font
+font-feature = -calt, -liga, -dlig
+font-size = 16
+font-thicken = true
+bold-is-bright = true
+
+# Window theme
+window-theme = "ghostty"
+macos-titlebar-style = native
+
+# Window settings
+adjust-cell-height = 8
+window-padding-balance = true
+resize-overlay = never
+cursor-style = bar
+
+# Keybind
+keybind = cmd+left=previous_tab
+keybind = cmd+right=next_tab

@@ -9,6 +9,7 @@ ln_with_mkdir() {
 dotfiles=(
   ".bundle/config"
   ".config/starship.toml"
+  ".config/ghostty/config"
   ".git_template/hooks/pre-push"
   ".peco/config.json"
   ".gemrc"
