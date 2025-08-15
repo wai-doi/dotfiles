@@ -20,6 +20,7 @@ dotfiles=(
   ".tigrc"
   ".vimrc"
   ".zshrc"
+  "iterm_settings/com.googlecode.iterm2.plist"
 )
 
 for file in "${dotfiles[@]}"; do
