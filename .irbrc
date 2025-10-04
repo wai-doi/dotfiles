@@ -34,14 +34,34 @@ safe_require 'yaml'
 # === Reline ===
 
 class Reline::LineEditor
+  # Monkey Patch Ctrl-R
   private def incremental_search_history(_key)
-    # Monkey Patch Ctrl-R
-    # https://github.com/peco/peco
+    # peco コマンドが存在しない場合はメッセージを表示して終了
+    unless system('which peco > /dev/null 2>&1')
+      puts "peco command not found. Please install peco from https://github.com/peco/peco"
+      return
+    end
+
+    histories = Reline::HISTORY
+      .reverse
+      .uniq
+      .map { |e| e.gsub(/\R/, '⏎ ') } # 改行を可視化
+      .join("\n")
+
     code = IO.popen('peco', 'r+') { |io|
-      io.puts Reline::HISTORY.reverse.uniq
-      io.gets
+      # 履歴を peco に渡す
+      io.write(histories)
+      # CPU負荷軽減のために close_write する
+      io.close_write
+      # 選択されたコードを peco から受け取る
+      io.gets(chomp: true)
     }
-    @buffer_of_lines = code ? code.split("\n") : ['']
+
+    # 選択されたコードをプロンプトにセット
+    @buffer_of_lines = code ? code.split('⏎ ') : ['']
+    # 最後の行に移動
+    @line_index = @buffer_of_lines.length - 1
+    # 最後の行の末尾に移動
     @byte_pointer = current_line.bytesize
   end
 end
