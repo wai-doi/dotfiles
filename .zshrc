@@ -57,6 +57,9 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
+# uv
+export PATH="$HOME/.local/bin:$PATH"
+
 ## less
 export LESS='-i -M -R'
 export PAGER=less
