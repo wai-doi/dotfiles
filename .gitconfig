@@ -31,7 +31,6 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = ~/.gitignore_global
 	commentChar = ";"
 [rebase]
 	autostash = true
@@ -61,3 +60,8 @@
 	side-by-side = true
 	hyperlinks = true
 	hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
