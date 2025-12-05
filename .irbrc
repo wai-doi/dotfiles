@@ -6,18 +6,13 @@ IRB.conf[:INSPECT_MODE] = :pp
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:COMPLETOR] = :type
 
-if Gem::Version.new(Reline::VERSION) >= Gem::Version.new('0.4.0')
-  Reline::Face.config(:completion_dialog) do |conf|
-    # Slightly lighter black than :black ('#222121')
-    default_background_color = '#2C2B2B'
+Reline::Face.config(:completion_dialog) do |conf|
+  # Slightly lighter black than :black ('#222121')
+  default_background_color = '#2C2B2B'
 
-    conf.define :default, foreground: :white, background: default_background_color
-    conf.define :enhanced, foreground: '#FFFFFF', background: '#005bbb'
-    conf.define :scrollbar, foreground: :gray, background: default_background_color
-  end
-else
-  # Disable auto completion because completion text is difficult to see.
-  IRB.conf[:USE_AUTOCOMPLETE] = false
+  conf.define :default, foreground: :white, background: default_background_color
+  conf.define :enhanced, foreground: '#FFFFFF', background: '#005bbb'
+  conf.define :scrollbar, foreground: :gray, background: default_background_color
 end
 
 def safe_require(lib_name)
