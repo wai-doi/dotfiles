@@ -37,6 +37,8 @@
 	autosquash = true
 [ghq]
 	root = ~/src
+[commit]
+	verbose = true
 [push]
 	default = current
 	autoSetupRemote = true
