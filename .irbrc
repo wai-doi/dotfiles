@@ -6,6 +6,12 @@ IRB.conf[:INSPECT_MODE] = :pp
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:COMPLETOR] = :type
 
+autoload :CSV, 'csv'
+autoload :Date, 'date'
+autoload :JSON, 'json'
+autoload :Time, 'time'
+autoload :YAML, 'yaml'
+
 Reline::Face.config(:completion_dialog) do |conf|
   # Slightly lighter black than :black ('#222121')
   default_background_color = '#2C2B2B'
@@ -14,17 +20,6 @@ Reline::Face.config(:completion_dialog) do |conf|
   conf.define :enhanced, foreground: '#FFFFFF', background: '#005bbb'
   conf.define :scrollbar, foreground: :gray, background: default_background_color
 end
-
-def safe_require(lib_name)
-  require lib_name
-rescue LoadError
-end
-
-safe_require 'csv'
-safe_require 'date'
-safe_require 'json'
-safe_require 'time'
-safe_require 'yaml'
 
 # === Reline ===
 
