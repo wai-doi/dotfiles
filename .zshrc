@@ -1,6 +1,15 @@
 export HISTSIZE=100000
 export SAVEHIST=1000000
 
+# iTerm2 CSI u 対応
+# Codex CLI で勝手に文字が入ることを防ぐために Iterm の設定で「Report keys using CSI u」を有効にしている
+# https://zenn.dev/woo_noo/articles/58002018de3061
+# しかし Shift + Space がスペースとして認識されなくなるなどの問題があるため、以下で対応する
+# Shift + Space を通常の Space として認識させる
+bindkey '\e[32;2u' magic-space
+# Shift + Enter を通常の Enter として認識させる
+bindkey '\e[13;2u' accept-line
+
 # zplug
 
 # 事前に `brew install zplug` の実行が必要
