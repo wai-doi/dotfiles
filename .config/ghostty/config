@@ -3,6 +3,8 @@ theme = Monokai Soda
 
 # Font
 font-family = FiraCode Nerd Font
+# 日本語用
+font-family = Hiragino Kaku Gothic ProN
 font-feature = -calt, -liga, -dlig
 font-size = 16
 font-thicken = true
