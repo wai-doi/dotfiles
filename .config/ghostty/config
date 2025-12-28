@@ -6,17 +6,23 @@ font-family = FiraCode Nerd Font
 font-feature = -calt, -liga, -dlig
 font-size = 16
 font-thicken = true
-bold-is-bright = true
 
 # Window theme
-window-theme = "ghostty"
-macos-titlebar-style = native
+window-theme = dark
+macos-titlebar-style = tabs
 
 # Window settings
-adjust-cell-height = 8
+adjust-cell-height = 3
+window-padding-x = 8
+window-padding-y = 8
 window-padding-balance = true
 resize-overlay = never
 cursor-style = bar
+
+# Split settings
+split-divider-color = 6e6e6e
+unfocused-split-fill = ffffff
+unfocused-split-opacity = 0.85
 
 # Keybind
 keybind = cmd+left=previous_tab
