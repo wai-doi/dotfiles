@@ -12,6 +12,7 @@ window-theme = dark
 macos-titlebar-style = tabs
 
 # Window settings
+maximize = true
 adjust-cell-height = 3
 window-padding-x = 8
 window-padding-y = 8
