@@ -51,17 +51,6 @@
 	lineNumber = true
 [advice]
 	detachedHead = false
-
-# git-delta https://github.com/dandavison/delta
-[core]
-	pager = delta
-[interactive]
-	diffFilter = delta --color-only
-[delta]
-	navigate = true
-	side-by-side = true
-	hyperlinks = true
-	hyperlinks-file-link-format = "vscode://file/{path}:{line}"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
