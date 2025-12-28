@@ -6,6 +6,8 @@ font-family = FiraCode Nerd Font
 font-feature = -calt, -liga, -dlig
 font-size = 16
 font-thicken = true
+# tigを見やすくするために太字の色を明るくする
+bold-color = bright
 
 # Window theme
 window-theme = dark
