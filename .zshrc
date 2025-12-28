@@ -104,7 +104,6 @@ alias ct='git checkout `git tag --format="%(align:width=70)%(refname:short)%(end
 alias cob="git --no-pager reflog | awk '\$3 == \"checkout:\" && /moving from/ {print \$8}' | awk '!a[\$0]++' | head -n 100 | peco | pbcopy"
 alias repo='gh repo view --web'
 alias ali='alias | peco | sed -e "s/=.*$//"'
-alias cat='bat -p'
 
 
 # function
