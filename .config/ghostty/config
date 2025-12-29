@@ -26,8 +26,7 @@ cursor-style = bar
 
 # Split settings
 split-divider-color = 6e6e6e
-unfocused-split-fill = ffffff
-unfocused-split-opacity = 0.85
+unfocused-split-opacity = 0.60
 
 # Keybind
 keybind = cmd+left=previous_tab
