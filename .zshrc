@@ -22,7 +22,6 @@ zplug "mafredri/zsh-async"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "b4b4r07/enhancd", use:init.sh
 zplug "Aloxaf/fzf-tab"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
@@ -56,6 +55,7 @@ setopt globdots
 # load
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
 
 
 ## rbenv
