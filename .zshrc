@@ -203,7 +203,9 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # fzf-tabでエラーが出るのを防ぐ
-zinit ice blockf
+autoload -Uz compinit
+compinit
+zinit light Aloxaf/fzf-tab
 
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
@@ -213,7 +215,6 @@ zinit light-mode for \
 
 zinit light mafredri/zsh-async
 zinit light zsh-users/zsh-completions
-zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit snippet OMZP::git
