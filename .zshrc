@@ -202,6 +202,9 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# fzf-tabでエラーが出るのを防ぐ
+zinit ice blockf
+
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
@@ -216,3 +219,10 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit snippet OMZP::git
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
+
+
+export PATH="/opt/homebrew/opt/python@3.12/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/yusuke.doi/.lmstudio/bin"
+# End of LM Studio CLI section
