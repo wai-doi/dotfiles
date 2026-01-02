@@ -1,5 +1,25 @@
 # Theme
 theme = Monokai Soda
+# iTerm2のMonokai Sodaをカスタマイズした配色
+background = #232323
+foreground = #cacbbd
+selection-background = #444444
+palette = 0=#1a1a1a
+palette = 1=#f4005f
+palette = 2=#98e024
+palette = 3=#fd971f
+palette = 4=#9d78ff
+palette = 5=#f33274
+palette = 6=#58d1eb
+palette = 7=#c4c5b5
+palette = 8=#625e4c
+palette = 9=#f4005f
+palette = 10=#a6e22e
+palette = 11=#e6db74
+palette = 12=#ae81ff
+palette = 13=#f92672
+palette = 14=#66d9ef
+palette = 15=#f8f8f2
 
 # Font
 font-family = FiraCode Nerd Font
