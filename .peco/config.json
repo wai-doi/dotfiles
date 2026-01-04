@@ -1,6 +1,7 @@
 {
+  "Use256Color": true,
   "Style": {
-    "Selected": ["on_green", "black"],
+    "Selected": ["on_green", "237"],
     "Query": ["green", "bold"],
     "Matched": ["red"]
   }
