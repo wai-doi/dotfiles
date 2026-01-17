@@ -29,7 +29,7 @@ setopt globdots
 # load
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 
 ## rbenv
