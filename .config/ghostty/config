@@ -1,3 +1,6 @@
+# Icon
+macos-icon = retro
+
 # Theme
 theme = Monokai Soda
 # iTerm2のMonokai Sodaをカスタマイズした配色
