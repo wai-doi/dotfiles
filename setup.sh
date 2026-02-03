@@ -27,4 +27,10 @@ for file in "${dotfiles[@]}"; do
   ln_with_mkdir "$file"
 done
 
+# Create local zsh env file if missing (not tracked by git)
+if [ ! -f "$HOME/.zshrc.local" ]; then
+  touch "$HOME/.zshrc.local"
+  echo "Created $HOME/.zshrc.local"
+fi
+
 echo "Dotfiles setup complete!"

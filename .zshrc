@@ -1,3 +1,8 @@
+# local env
+if [ -f "$HOME/.zshrc.local" ]; then
+    source "$HOME/.zshrc.local"
+fi
+
 export HISTSIZE=100000
 export SAVEHIST=1000000
 
