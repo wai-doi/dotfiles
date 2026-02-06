@@ -7,6 +7,7 @@ set wrap-lines = yes
 color diff-header black white
 color id yellow default
 color cursor white magenta bold
+color cursor-blur white magenta bold
 
 bind status + !git commit --amend --allow-empty
 bind diff F ?!git commit --fixup %(commit)
