@@ -222,6 +222,7 @@ zinit light mafredri/zsh-async
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
+zinit snippet OMZL::git.zsh # git_current_branch などを提供する
 zinit snippet OMZP::git
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
