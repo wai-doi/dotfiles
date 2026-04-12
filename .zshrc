@@ -61,6 +61,9 @@ export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 ## bat
 export BAT_THEME='Monokai Extended'
 
+## lazygit
+# MacOS で lazygit の設定ファイルは ~/Library/Application\ Support/lazygit/config.yml だが、dotfiles で管理するために ~/.config/lazygit/config.yml にしている
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # alias
 alias reload='source ~/.zshrc'

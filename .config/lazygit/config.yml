@@ -1,0 +1,5 @@
+gui:
+  showFileTree: false
+  showRandomTip: false
+  showCommandLog: false
+  nerdFontsVersion: "3"

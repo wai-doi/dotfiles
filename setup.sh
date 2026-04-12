@@ -12,6 +12,7 @@ dotfiles=(
   ".config/ghostty/config"
   ".config/git/config"
   ".config/git/ignore"
+  ".config/lazygit/config.yml"
   ".git_template/hooks/pre-push"
   ".peco/config.json"
   ".gemrc"
