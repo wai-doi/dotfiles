@@ -21,6 +21,35 @@ Reline::Face.config(:completion_dialog) do |conf|
   conf.define :scrollbar, foreground: :gray, background: default_background_color
 end
 
+module GlobalGemLoader
+  module_function
+
+  # Load a globally installed gem even under Bundler.
+  def require!(gem_name, require_path)
+    # Try the normal RubyGems lookup first.
+    spec = Gem::Specification.find_all_by_name(gem_name).max_by(&:version)
+    gem_path =
+      if spec
+        spec.full_gem_path
+      else
+        # Fall back to the gemspec because Bundler hides gems outside Gemfile.
+        gemspec = Gem::Specification.dirs
+          .flat_map { |dir| Dir.glob(File.join(dir, "#{gem_name}-*.gemspec")) }
+          .max
+
+        raise LoadError, "#{gem_name} gem is not installed" unless gemspec
+
+        installed_gem_name = File.basename(gemspec, ".gemspec")
+        File.expand_path("../gems/#{installed_gem_name}", File.dirname(gemspec))
+      end
+
+    # Add the gem's lib dir so its internal requires work.
+    lib_path = File.join(gem_path, "lib")
+    $LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
+    require require_path
+  end
+end
+
 # === irb-history-picker ===
 
 require "open3"
@@ -133,19 +162,41 @@ module IRBHistoryPicker
   end
 end
 
-IRB.conf[:IRB_RC] = proc do |context|
-  IRBHistoryPicker.activate!(context)
-end
+# === rails-sql-formatter ===
 
-# === Rails ===
+# Enable pp_sql log formatting only in Rails console.
+module RailsSqlFormatter
+  class << self
+    def activate!
+      return unless defined?(Rails::Console)
 
-if defined? Rails::Console
-  class ActiveRecord::Relation < Object
-    def pp_sql
-      # https://www.npmjs.com/package/sql-formatter
-      system("echo '#{to_sql}' | sql-formatter")
+      GlobalGemLoader.require!("anbt-sql-formatter", "anbt-sql-formatter/formatter")
+      GlobalGemLoader.require!("pp_sql", "pp_sql")
+
+      # Keep the original to_sql behavior.
+      PpSql.rewrite_to_sql_method = false
+      # Format SQL only in Rails logs.
+      PpSql.add_rails_logger_formatting = true
+
+      # Apply the patch whether Active Record is already loaded or not.
+      ActiveSupport.on_load(:active_record) do
+        unless ActiveRecord::Relation.ancestors.include?(PpSql::ToSqlBeautify)
+          ActiveRecord::Relation.prepend(PpSql::ToSqlBeautify)
+        end
+
+        unless ActiveRecord::LogSubscriber.ancestors.include?(PpSql::LogSubscriberPrettyPrint)
+          ActiveRecord::LogSubscriber.prepend(PpSql::LogSubscriberPrettyPrint)
+        end
+      end
+    rescue LoadError => e
+      warn "rails-sql-formatter: #{e.message}"
     end
   end
+end
+
+IRB.conf[:IRB_RC] = proc do |context|
+  IRBHistoryPicker.activate!(context)
+  RailsSqlFormatter.activate!
 end
 
 puts RUBY_DESCRIPTION
