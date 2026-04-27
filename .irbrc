@@ -198,5 +198,3 @@ IRB.conf[:IRB_RC] = proc do |context|
   IRBHistoryPicker.activate!(context)
   RailsSqlFormatter.activate!
 end
-
-puts RUBY_DESCRIPTION
