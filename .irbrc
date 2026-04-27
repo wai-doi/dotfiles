@@ -25,7 +25,7 @@ module GlobalGemLoader
   module_function
 
   # Load a globally installed gem even under Bundler.
-  def require!(gem_name, require_path)
+  def require!(gem_name, require_path = gem_name)
     # Try the normal RubyGems lookup first.
     spec = Gem::Specification.find_all_by_name(gem_name).max_by(&:version)
     gem_path =
@@ -171,7 +171,7 @@ module RailsSqlFormatter
       return unless defined?(Rails::Console)
 
       GlobalGemLoader.require!("anbt-sql-formatter", "anbt-sql-formatter/formatter")
-      GlobalGemLoader.require!("pp_sql", "pp_sql")
+      GlobalGemLoader.require!("pp_sql")
 
       # Keep the original to_sql behavior.
       PpSql.rewrite_to_sql_method = false
