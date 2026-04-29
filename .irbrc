@@ -14,7 +14,7 @@ autoload :YAML, 'yaml'
 
 Reline::Face.config(:completion_dialog) do |conf|
   # Slightly lighter black than :black ('#222121')
-  default_background_color = '#2C2B2B'
+  default_background_color = '#3C3B3B'
 
   conf.define :default, foreground: :white, background: default_background_color
   conf.define :enhanced, foreground: '#FFFFFF', background: '#005bbb'
