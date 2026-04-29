@@ -50,6 +50,35 @@ module GlobalGemLoader
   end
 end
 
+# === install-irbrc-gems ===
+
+require "irb/command"
+
+class InstallIrbrcGems < IRB::Command::Base
+  category "irbrc"
+  description "Install gems required by .irbrc"
+
+  GEMS = %w[anbt-sql-formatter pp_sql].freeze
+
+  def execute(_arg)
+    require 'rubygems/dependency_installer'
+
+    GEMS.each do |name|
+      if Gem::Specification.dirs.any? { |dir| Dir.glob(File.join(dir, "#{name}-*.gemspec")).any? }
+        puts "#{name}: already installed"
+      else
+        print "#{name}: installing..."
+        specs = Gem::DefaultUserInteraction.use_ui(Gem::SilentUI.new) do
+          Gem::DependencyInstaller.new.install(name)
+        end
+        puts " done (#{specs.first.version})"
+      end
+    end
+  end
+end
+
+IRB::Command.register(:install_irbrc_gems, InstallIrbrcGems)
+
 # === irb-history-picker ===
 
 require "open3"
