@@ -1,9 +1,45 @@
 # `edit` command opens files in your editor
 ENV['EDITOR'] = 'code'
 
+module GlobalGemLoader
+  module_function
+
+  # Load a globally installed gem even under Bundler, resolving dependencies.
+  def require!(gem_name, require_path = gem_name)
+    add_load_paths(gem_name)
+    require require_path
+  end
+
+  def add_load_paths(gem_name)
+    spec = find_spec(gem_name)
+    raise LoadError, "#{gem_name} gem is not installed" unless spec
+
+    lib_path = File.join(spec.full_gem_path, "lib")
+    return if $LOAD_PATH.include?(lib_path)
+
+    $LOAD_PATH.unshift(lib_path)
+    spec.runtime_dependencies.each { |dep| add_load_paths(dep.name) }
+  end
+
+  def find_spec(gem_name)
+    spec = Gem::Specification.find_all_by_name(gem_name).max_by(&:version)
+    return spec if spec
+
+    # Fall back to the gemspec because Bundler hides gems outside Gemfile.
+    gemspec_path = Gem::Specification.dirs
+      .flat_map { |dir| Dir.glob(File.join(dir, "#{gem_name}-*.gemspec")) }
+      .max
+    Gem::Specification.load(gemspec_path) if gemspec_path
+  end
+
+  private_class_method :add_load_paths, :find_spec
+end
+
 IRB.conf[:SAVE_HISTORY] = 10000
 IRB.conf[:INSPECT_MODE] = :pp
 IRB.conf[:PROMPT_MODE] = :SIMPLE
+
+GlobalGemLoader.require!("repl_type_completor")
 IRB.conf[:COMPLETOR] = :type
 
 autoload :CSV, 'csv'
@@ -19,35 +55,6 @@ Reline::Face.config(:completion_dialog) do |conf|
   conf.define :default, foreground: :white, background: default_background_color
   conf.define :enhanced, foreground: '#FFFFFF', background: '#005bbb'
   conf.define :scrollbar, foreground: :gray, background: default_background_color
-end
-
-module GlobalGemLoader
-  module_function
-
-  # Load a globally installed gem even under Bundler.
-  def require!(gem_name, require_path = gem_name)
-    # Try the normal RubyGems lookup first.
-    spec = Gem::Specification.find_all_by_name(gem_name).max_by(&:version)
-    gem_path =
-      if spec
-        spec.full_gem_path
-      else
-        # Fall back to the gemspec because Bundler hides gems outside Gemfile.
-        gemspec = Gem::Specification.dirs
-          .flat_map { |dir| Dir.glob(File.join(dir, "#{gem_name}-*.gemspec")) }
-          .max
-
-        raise LoadError, "#{gem_name} gem is not installed" unless gemspec
-
-        installed_gem_name = File.basename(gemspec, ".gemspec")
-        File.expand_path("../gems/#{installed_gem_name}", File.dirname(gemspec))
-      end
-
-    # Add the gem's lib dir so its internal requires work.
-    lib_path = File.join(gem_path, "lib")
-    $LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
-    require require_path
-  end
 end
 
 # === install-irbrc-gems ===
