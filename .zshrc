@@ -102,13 +102,13 @@ alias ojt='oj t -c "ruby main.rb" -d test'
 # リポジトリに移動する
 function cr() {
     if [ $# -eq 1 ]; then
-        repo=$(ghq list -p | fzf --query "$1")
+        repo=$(ghq list | fzf --query "$1")
     else
-        repo=$(ghq list -p | fzf)
+        repo=$(ghq list | fzf)
     fi
 
     if [ -n "$repo" ]; then
-        cd $repo
+        cd "$(ghq root)/$repo"
     fi
 }
 
