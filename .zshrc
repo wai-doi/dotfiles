@@ -66,7 +66,7 @@ export BAT_THEME='Monokai Extended'
 export XDG_CONFIG_HOME="$HOME/.config"
 
 ## fzf
-export FZF_DEFAULT_OPTS='--height 60% --reverse --color=fg+:2:bold,hl:1,hl+:1,query:2:bold'
+export FZF_DEFAULT_OPTS='--height 60% --reverse --info=inline-right --no-separator --color=fg+:2:bold,hl:1,hl+:1,query:2:bold'
 export FZF_CTRL_T_OPTS="--preview 'bat --plain --color=always {} 2>/dev/null || ls -la {}'"
 export FZF_CTRL_R_OPTS='--with-nth 2..'
 # Ctrl+T: ファイル選択, Ctrl+R: 履歴検索
@@ -88,8 +88,8 @@ alias bp='bundle pristine'
 # https://qiita.com/vzvu3k6k/items/12aff810ea93c7c6f307
 alias bel='BUNDLE_GEMFILE=Gemfile.local be'
 alias bei='bundle && BUNDLE_GEMFILE=Gemfile.local bundle'
-alias cb='git checkout `git branch --format="%(align:width=70)%(refname:short)%(end) %(objectname:short) %(align:width=15,position=right)%(committerdate:relative)%(end) %(align:width=20)%(authorname)%(end) %(subject)" --sort=-committerdate | fzf | awk "{print \\$1}"`'
-alias ct='git checkout `git tag --format="%(align:width=70)%(refname:short)%(end) %(objectname:short) %(align:width=15,position=right)%(committerdate:relative)%(end) %(align:width=20)%(authorname)%(end) %(subject)" --sort=-committerdate | fzf | awk "{print \\$1}"`'
+alias cb='git checkout $(git branch --format="%(refname:short)|%(committerdate:relative)|%(authorname)" --sort=-committerdate | column -t -s "|" | fzf --preview "git log --oneline --graph --color=always {1} | head -20" | awk "{print \$1}")'
+alias ct='git checkout $(git tag --format="%(refname:short)|%(creatordate:relative)|%(subject)" --sort=-creatordate | column -t -s "|" | fzf --preview "git log --oneline --graph --color=always {1} | head -20" | awk "{print \$1}")'
 alias cob="git --no-pager reflog | awk '\$3 == \"checkout:\" && /moving from/ {print \$8}' | awk '!a[\$0]++' | head -n 100 | fzf | pbcopy"
 alias repo='gh repo view --web'
 alias ali='alias | fzf | sed -e "s/=.*$//"'
