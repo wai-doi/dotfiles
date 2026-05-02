@@ -65,6 +65,9 @@ export BAT_THEME='Monokai Extended'
 # MacOS で lazygit の設定ファイルは ~/Library/Application\ Support/lazygit/config.yml だが、dotfiles で管理するために ~/.config/lazygit/config.yml にしている
 export XDG_CONFIG_HOME="$HOME/.config"
 
+## fzf
+export FZF_DEFAULT_OPTS='--height 60% --reverse --color=fg+:2:bold,hl:1,hl+:1,query:2:bold'
+
 # alias
 alias reload='source ~/.zshrc'
 alias home='cd ~'
@@ -81,35 +84,35 @@ alias bp='bundle pristine'
 # https://qiita.com/vzvu3k6k/items/12aff810ea93c7c6f307
 alias bel='BUNDLE_GEMFILE=Gemfile.local be'
 alias bei='bundle && BUNDLE_GEMFILE=Gemfile.local bundle'
-alias cb='git checkout `git branch --format="%(align:width=70)%(refname:short)%(end) %(objectname:short) %(align:width=15,position=right)%(committerdate:relative)%(end) %(align:width=20)%(authorname)%(end) %(subject)" --sort=-committerdate | peco | awk "{print \\$1}"`'
-alias ct='git checkout `git tag --format="%(align:width=70)%(refname:short)%(end) %(objectname:short) %(align:width=15,position=right)%(committerdate:relative)%(end) %(align:width=20)%(authorname)%(end) %(subject)" --sort=-committerdate | peco | awk "{print \\$1}"`'
-alias cob="git --no-pager reflog | awk '\$3 == \"checkout:\" && /moving from/ {print \$8}' | awk '!a[\$0]++' | head -n 100 | peco | pbcopy"
+alias cb='git checkout `git branch --format="%(align:width=70)%(refname:short)%(end) %(objectname:short) %(align:width=15,position=right)%(committerdate:relative)%(end) %(align:width=20)%(authorname)%(end) %(subject)" --sort=-committerdate | fzf | awk "{print \\$1}"`'
+alias ct='git checkout `git tag --format="%(align:width=70)%(refname:short)%(end) %(objectname:short) %(align:width=15,position=right)%(committerdate:relative)%(end) %(align:width=20)%(authorname)%(end) %(subject)" --sort=-committerdate | fzf | awk "{print \\$1}"`'
+alias cob="git --no-pager reflog | awk '\$3 == \"checkout:\" && /moving from/ {print \$8}' | awk '!a[\$0]++' | head -n 100 | fzf | pbcopy"
 alias repo='gh repo view --web'
-alias ali='alias | peco | sed -e "s/=.*$//"'
+alias ali='alias | fzf | sed -e "s/=.*$//"'
 # https://note.com/dev_onecareer/n/n673b1e040956
 alias ojt='oj t -c "ruby main.rb" -d test'
 
 
 # function
-# pecoで履歴を検索
-function peco-select-history() {
+# fzfで履歴を検索
+function fzf-select-history() {
     # historyを番号なし、逆順、最初から表示。
     # 順番を保持して重複を削除。
-    # カーソルの左側の文字列をクエリにしてpecoを起動
+    # カーソルの左側の文字列をクエリにしてfzfを起動
     # \nを改行に変換
-    BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
+    BUFFER="$(history -nr 1 | awk '!a[$0]++' | fzf --query "$LBUFFER" | sed 's/\\n/\n/')"
     CURSOR=$#BUFFER             # カーソルを文末に移動
     zle -R -c                   # refresh
 }
-zle -N peco-select-history
-bindkey '^R' peco-select-history
+zle -N fzf-select-history
+bindkey '^R' fzf-select-history
 
 # リポジトリに移動する
 function cr() {
     if [ $# -eq 1 ]; then
-        repo=$(ghq list -p | peco --query $1)
+        repo=$(ghq list -p | fzf --query "$1")
     else
-        repo=$(ghq list -p | peco)
+        repo=$(ghq list -p | fzf)
     fi
 
     if [ -n "$repo" ]; then
@@ -119,17 +122,17 @@ function cr() {
 
 function ghqhub() {
     if [ $# -eq 1 ]; then
-        hub browse $(ghq list | peco --query $1 | cut -d "/" -f 2,3)
+        hub browse $(ghq list | fzf --query "$1" | cut -d "/" -f 2,3)
     else
-        hub browse $(ghq list | peco | cut -d "/" -f 2,3)
+        hub browse $(ghq list | fzf | cut -d "/" -f 2,3)
     fi
 }
 
 function ghqgem() {
     if [ $# -eq 1 ]; then
-        open "https://rubygems.org/gems/$(ghq list | peco --query $1 | cut -d "/" -f 3)"
+        open "https://rubygems.org/gems/$(ghq list | fzf --query "$1" | cut -d "/" -f 3)"
     else
-        open "https://rubygems.org/gems/$(ghq list | peco | cut -d "/" -f 3)"
+        open "https://rubygems.org/gems/$(ghq list | fzf | cut -d "/" -f 3)"
     fi
 }
 
@@ -148,7 +151,7 @@ function pro() {
 
 # PR一覧から指定したPRをブラウザで開く
 function prl() {
-    pr_num=$(gh pr list -s all "$@" | peco | cut -f 1)
+    pr_num=$(gh pr list -s all "$@" | fzf | cut -f 1)
 
     if [ -n "$pr_num" ]; then
         gh pr view $pr_num --web
@@ -157,7 +160,7 @@ function prl() {
 
 # PR一覧からブランチをチェックアウトする
 function cbpr() {
-    pr_num=$(gh pr list -s all "$@" | peco | cut -f 1)
+    pr_num=$(gh pr list -s all "$@" | fzf | cut -f 1)
 
     if [ -n "$pr_num" ]; then
         gh pr checkout $pr_num
@@ -166,7 +169,7 @@ function cbpr() {
 
 # 自分が reviewer になっているPR一覧からブランチをチェックアウトする
 function review() {
-    pr_num=$(gh pr list --search "user-review-requested:@me" | peco | awk '{print $1}')
+    pr_num=$(gh pr list --search "user-review-requested:@me" | fzf | awk '{print $1}')
 
     if [ -n "$pr_num" ]; then
         gh pr checkout $pr_num
