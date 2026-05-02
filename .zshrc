@@ -67,6 +67,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 ## fzf
 export FZF_DEFAULT_OPTS='--height 60% --reverse --color=fg+:2:bold,hl:1,hl+:1,query:2:bold'
+export FZF_CTRL_T_OPTS="--preview 'bat --plain --color=always {} 2>/dev/null || ls -la {}'"
+export FZF_CTRL_R_OPTS='--with-nth 2..'
+# Ctrl+T: ファイル選択, Ctrl+R: 履歴検索
+source <(fzf --zsh)
 
 # alias
 alias reload='source ~/.zshrc'
@@ -94,18 +98,6 @@ alias ojt='oj t -c "ruby main.rb" -d test'
 
 
 # function
-# fzfで履歴を検索
-function fzf-select-history() {
-    # historyを番号なし、逆順、最初から表示。
-    # 順番を保持して重複を削除。
-    # カーソルの左側の文字列をクエリにしてfzfを起動
-    # \nを改行に変換
-    BUFFER="$(history -nr 1 | awk '!a[$0]++' | fzf --query "$LBUFFER" | sed 's/\\n/\n/')"
-    CURSOR=$#BUFFER             # カーソルを文末に移動
-    zle -R -c                   # refresh
-}
-zle -N fzf-select-history
-bindkey '^R' fzf-select-history
 
 # リポジトリに移動する
 function cr() {
