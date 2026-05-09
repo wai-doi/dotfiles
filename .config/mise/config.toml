@@ -1,4 +1,4 @@
 [tools]
 node = "lts"
 python = "latest"
-ruby = "latest"
+ruby = { version = "latest", postinstall = "gem install gem-src" }
