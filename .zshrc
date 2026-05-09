@@ -36,13 +36,8 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
-
-## rbenv
-eval "$(rbenv init -)"
-
-## nodenv
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
+## mise
+eval "$(mise activate zsh)"
 
 # uv
 export PATH="$HOME/.local/bin:$PATH"
@@ -168,27 +163,6 @@ function review() {
     fi
 }
 
-# 最新の安定版 Ruby をインストールして global にする
-function update_latest_ruby() {
-    brew upgrade ruby-build
-
-    latest=$(rbenv install -l | grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+$' | tail -1)
-
-    echo "Latest stable Ruby version: $latest"
-
-    if ! rbenv versions --bare | grep -qx "$latest"; then
-        echo "Installing Ruby $latest..."
-        rbenv install "$latest"
-
-        echo "Setting Ruby $latest as global version..."
-        rbenv global "$latest"
-
-        echo "Current Ruby version: $(ruby -v)"
-    else
-        echo "Ruby $latest is already installed."
-    fi
-}
-
 # g++でコンパイルエラーになったため、それ回避するための設定。
 # 参考: https://qiita.com/ikoanymg/items/b108e97093b50662673d
 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
@@ -228,8 +202,6 @@ zinit snippet OMZP::git
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 
-
-export PATH="/opt/homebrew/opt/python@3.12/bin:$PATH"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/yusuke.doi/.lmstudio/bin"
