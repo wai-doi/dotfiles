@@ -66,9 +66,9 @@ export BAT_THEME='Monokai Extended'
 export XDG_CONFIG_HOME="$HOME/.config"
 
 ## fzf
-export FZF_DEFAULT_OPTS='--height 60% --reverse --info=inline-right --no-separator --exact --color=fg+:2:bold,hl:1,hl+:1,query:2:bold'
+export FZF_DEFAULT_OPTS='--height 60% --reverse --info=inline-right --no-separator --exact --color=bg+:8,hl:1,hl+:1,query:2:bold'
 export FZF_CTRL_T_OPTS="--preview 'bat --plain --color=always {} 2>/dev/null || ls -la {}'"
-export FZF_CTRL_R_OPTS='--with-nth 2..'
+export FZF_CTRL_R_OPTS='--with-nth 2.. --no-highlight-line'
 # Ctrl+T: ファイル選択, Ctrl+R: 履歴検索
 source <(fzf --zsh)
 
