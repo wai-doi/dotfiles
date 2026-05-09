@@ -8,6 +8,7 @@ ln_with_mkdir() {
 
 dotfiles=(
   ".bundle/config"
+  ".config/mise/config.toml"
   ".config/starship.toml"
   ".config/ghostty/config"
   ".config/git/config"
