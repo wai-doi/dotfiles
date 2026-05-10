@@ -5,7 +5,10 @@ if [ "$(git rev-parse --abbrev-ref HEAD | grep '^wip')" ]; then
     exit 1
 fi
 
-if [ "$(git log --oneline master..head | grep 'fixup! ')" ]; then
+default_branch=$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null | sed 's@^origin/@@')
+default_branch=${default_branch:-main}
+
+if [ "$(git log --oneline "${default_branch}..HEAD" | grep 'fixup! ')" ]; then
     echo "\033[0;31m[ABORT] You cannot push a commit whose title starts \`fixup! \`.\033[0;39m" 1>&2
     exit 1
 fi
