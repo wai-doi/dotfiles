@@ -13,6 +13,11 @@ if [ "$(git log --oneline "${default_branch}..HEAD" | grep 'fixup! ')" ]; then
     exit 1
 fi
 
+if [ "$(git log --oneline "${default_branch}..HEAD" | grep -iE '\bwip\b')" ]; then
+    printf "\033[0;31m[ABORT] You cannot push a commit whose title contains \`wip\`.\033[0;39m\n" 1>&2
+    exit 1
+fi
+
 # Executes any command specified in the command variable during a push.
 command=""
 if [ -n "$command" ]; then
