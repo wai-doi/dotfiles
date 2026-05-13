@@ -1,0 +1,15 @@
+#!/bin/bash
+
+default_branch=$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null | sed 's@^origin/@@')
+default_branch=${default_branch:-main}
+commits=$(git log --oneline "${default_branch}..HEAD")
+
+if echo "$commits" | grep -q 'fixup! '; then
+    printf "\033[0;31m[ABORT] You cannot push a commit whose title starts \`fixup! \`.\033[0;39m\n" 1>&2
+    exit 1
+fi
+
+if echo "$commits" | grep -qiE '\bwip\b'; then
+    printf "\033[0;31m[ABORT] You cannot push a commit whose title contains \`wip\`.\033[0;39m\n" 1>&2
+    exit 1
+fi

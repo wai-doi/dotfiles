@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if git rev-parse --abbrev-ref HEAD | grep -q '^wip'; then
+    printf "\033[0;31m[ABORT] You cannot push a branch whose prefix is \`wip\`.\033[0;39m\n" 1>&2
+    exit 1
+fi

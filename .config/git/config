@@ -46,7 +46,12 @@
 	ff = only
 [init]
 	defaultBranch = main
-	templatedir = ~/.git_template/
+[hook "no-wip-branch"]
+	event = pre-push
+	command = ~/.config/git/hooks/no-wip-branch
+[hook "no-draft-commits"]
+	event = pre-push
+	command = ~/.config/git/hooks/no-draft-commits
 [grep]
 	lineNumber = true
 [advice]
