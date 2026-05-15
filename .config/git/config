@@ -37,6 +37,7 @@
 	autosquash = true
 [ghq]
 	root = ~/src
+	user = wai-doi
 [commit]
 	verbose = true
 [push]
