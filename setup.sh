@@ -18,6 +18,7 @@ dotfiles=(
   ".config/lazygit/config.yml"
   ".peco/config.json"
   ".gemrc"
+  ".psqlrc"
   ".irbrc"
   ".pryrc"
   ".tigrc"
