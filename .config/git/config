@@ -1,6 +1,42 @@
 [user]
 	name = Yusuke Doi
 	email = yuusukedoi23@gmail.com
+[core]
+	commentChar = ";"
+[init]
+	defaultBranch = main
+[commit]
+	verbose = true
+[push]
+	default = current
+	autoSetupRemote = true
+[pull]
+	ff = only
+[grep]
+	lineNumber = true
+[rebase]
+	autostash = true
+	autosquash = true
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+[advice]
+	detachedHead = false
+[color]
+	ui = auto
+[hook "no-wip-branch"]
+	event = pre-push
+	command = ~/.config/git/hooks/no-wip-branch
+[hook "no-draft-commits"]
+	event = pre-push
+	command = ~/.config/git/hooks/no-draft-commits
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[ghq]
+	root = ~/src
+	user = wai-doi
 [alias]
 	ad = add
 	b = branch
@@ -28,39 +64,3 @@
 	serve = daemon --export-all --base-path=. --base-path-relaxed
 	in = !sh -c 'git log ..origin/${1:-master}'
 	out = !sh -c 'git log origin/${1:-master}..' -
-[color]
-	ui = auto
-[core]
-	commentChar = ";"
-[rebase]
-	autostash = true
-	autosquash = true
-[ghq]
-	root = ~/src
-	user = wai-doi
-[commit]
-	verbose = true
-[push]
-	default = current
-	autoSetupRemote = true
-[pull]
-	ff = only
-[url "git@github.com:"]
-	pushInsteadOf = https://github.com/
-[init]
-	defaultBranch = main
-[hook "no-wip-branch"]
-	event = pre-push
-	command = ~/.config/git/hooks/no-wip-branch
-[hook "no-draft-commits"]
-	event = pre-push
-	command = ~/.config/git/hooks/no-draft-commits
-[grep]
-	lineNumber = true
-[advice]
-	detachedHead = false
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
