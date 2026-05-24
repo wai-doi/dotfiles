@@ -13,6 +13,9 @@
 	useForceIfIncludes = true
 [pull]
 	ff = only
+[status]
+	short = true
+	branch = true
 [grep]
 	lineNumber = true
 [rebase]
