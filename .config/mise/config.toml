@@ -5,3 +5,4 @@ idiomatic_version_file_enable_tools = ["ruby"]
 node = "lts"
 python = "latest"
 ruby = { version = "latest", postinstall = "gem install gem-src" }
+rust = "latest"
