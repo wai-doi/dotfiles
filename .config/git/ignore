@@ -21,3 +21,6 @@ Gemfile.local.lock
 
 # Claude Code
 **/.claude/settings.local.json
+
+# playwright-mcp が生成するディレクトリのため
+.playwright-mcp/
