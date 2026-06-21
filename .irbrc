@@ -26,10 +26,11 @@ module GlobalGemLoader
     return spec if spec
 
     # Fall back to the gemspec because Bundler hides gems outside Gemfile.
-    gemspec_path = Gem::Specification.dirs
+    Gem::Specification.dirs
       .flat_map { |dir| Dir.glob(File.join(dir, "#{gem_name}-*.gemspec")) }
-      .max
-    Gem::Specification.load(gemspec_path) if gemspec_path
+      .map { |path| Gem::Specification.load(path) }
+      .select { |s| s.name == gem_name }
+      .max_by(&:version)
   end
 
   private_class_method :add_load_paths, :find_spec
