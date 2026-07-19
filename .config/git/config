@@ -43,6 +43,8 @@
 [ghq]
 	root = ~/src
 	user = wai-doi
+[wt]
+	basedir = .worktrees
 [alias]
 	ad = add
 	b = branch

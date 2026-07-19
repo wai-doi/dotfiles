@@ -39,6 +39,9 @@ eval "$(zoxide init zsh --cmd cd)"
 ## mise
 eval "$(mise activate zsh)"
 
+## git-wt
+eval "$(git wt --init zsh)"
+
 # uv
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -160,6 +163,16 @@ function review() {
 
     if [ -n "$pr_num" ]; then
         gh pr checkout $pr_num
+    fi
+}
+
+# ワークツリー一覧から選択して切り替える
+function wt() {
+    local target
+    target=$(git wt | tail -n +2 | fzf | awk '{print $(NF-1)}')
+
+    if [ -n "$target" ]; then
+        git wt "$target"
     fi
 }
 
