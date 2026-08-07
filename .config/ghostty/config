@@ -29,7 +29,7 @@ font-family = FiraCode Nerd Font
 # 日本語用
 font-family = Hiragino Kaku Gothic ProN
 font-feature = -calt, -liga, -dlig
-font-size = 16
+font-size = 15
 font-thicken = true
 # tigを見やすくするために太字の色を明るくする
 bold-color = bright
@@ -54,3 +54,9 @@ unfocused-split-opacity = 0.60
 # Keybind
 keybind = cmd+left=previous_tab
 keybind = cmd+right=next_tab
+
+# cmux only
+# サイドバーの文字サイズ（デフォルト12.5）
+sidebar-font-size = 14
+# ワークスペースのタブバーの文字サイズ（デフォルト11）
+surface-tab-bar-font-size = 14

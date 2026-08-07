@@ -1,0 +1,28 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion" : 1,
+  "app" : {
+    "appIcon" : "dark",
+    "minimalMode" : true
+  },
+  "notifications" : {
+    "sound" : "none"
+  },
+  "sidebar" : {
+    "showNotificationMessage" : false
+  },
+  "sidebarAppearance" : {
+    "matchTerminalBackground" : true
+  },
+  "workspaceColors" : {
+    "selectionColor" : "#454545"
+  },
+  "shortcuts" : {
+    "bindings" : {
+      "prevSurface" : "cmd+left",
+      "nextSurface" : "cmd+right",
+      "prevSidebarTab" : "cmd+up",
+      "nextSidebarTab" : "cmd+down"
+    }
+  }
+}

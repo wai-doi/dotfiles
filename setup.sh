@@ -10,6 +10,7 @@ dotfiles=(
   ".bundle/config"
   ".config/mise/config.toml"
   ".config/starship.toml"
+  ".config/cmux/cmux.json"
   ".config/ghostty/config"
   ".config/git/config"
   ".config/git/ignore"
