@@ -31,6 +31,11 @@ setopt list_types
 setopt globdots
 
 
+# 補完の初期化。git wt などの init スクリプトが compdef を呼ぶため、それらより前に実行する
+# （fzf-tab のロードより前という条件も満たす）
+autoload -Uz compinit
+compinit
+
 # load
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
@@ -195,9 +200,6 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# fzf-tabでエラーが出るのを防ぐ
-autoload -Uz compinit
-compinit
 zinit light Aloxaf/fzf-tab
 
 zinit light-mode for \
