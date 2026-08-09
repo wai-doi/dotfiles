@@ -30,6 +30,10 @@ setopt list_packed
 setopt list_types
 setopt globdots
 
+# Claude Code の bash ツールは実行前に NO_BARE_GLOB_QUAL を設定するため、
+# zinit 内部の *.plugin.zsh(DN) のような glob qualifier が壊れる。既定値に戻す
+setopt bare_glob_qual
+
 
 # 補完の初期化。git wt などの init スクリプトが compdef を呼ぶため、それらより前に実行する
 # （fzf-tab のロードより前という条件も満たす）
