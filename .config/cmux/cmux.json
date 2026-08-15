@@ -3,6 +3,7 @@
   "schemaVersion" : 1,
   "app" : {
     "appIcon" : "dark",
+    "appearance" : "dark",
     "minimalMode" : true
   },
   "notifications" : {
