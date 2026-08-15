@@ -17,6 +17,9 @@
   "workspaceColors" : {
     "selectionColor" : "#454545"
   },
+  "browser" : {
+    "openTerminalLinksInCmuxBrowser" : false
+  },
   "shortcuts" : {
     "bindings" : {
       "prevSurface" : "cmd+left",
