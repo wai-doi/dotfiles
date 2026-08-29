@@ -10,6 +10,8 @@
     "sound" : "none"
   },
   "sidebar" : {
+    "openPullRequestLinksInCmuxBrowser" : false,
+    "openPortLinksInCmuxBrowser" : false,
     "showNotificationMessage" : false
   },
   "sidebarAppearance" : {
@@ -19,7 +21,8 @@
     "selectionColor" : "#454545"
   },
   "browser" : {
-    "openTerminalLinksInCmuxBrowser" : false
+    "openTerminalLinksInCmuxBrowser" : false,
+    "interceptTerminalOpenCommandInCmuxBrowser" : false
   },
   "shortcuts" : {
     "bindings" : {
