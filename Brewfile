@@ -23,7 +23,6 @@ brew "jq"
 brew "mise"
 brew "mysql"
 brew "nkf"
-brew "node-sass"
 brew "peco"
 brew "postgresql@14", restart_service: true
 brew "redis", restart_service: true
