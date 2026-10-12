@@ -17,6 +17,7 @@ dotfiles=(
   ".config/git/hooks/no-wip-branch"
   ".config/git/hooks/no-draft-commits"
   ".config/lazygit/config.yml"
+  ".config/yazi/yazi.toml"
   ".peco/config.json"
   ".gemrc"
   ".psqlrc"
