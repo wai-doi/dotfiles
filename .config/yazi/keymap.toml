@@ -1,0 +1,4 @@
+[mgr]
+prepend_keymap = [
+	{ on = "<Esc>", run = "plugin escape-or-quit", desc = "Escape, or quit if there is nothing to escape" },
+]

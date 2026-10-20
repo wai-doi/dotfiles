@@ -18,6 +18,8 @@ dotfiles=(
   ".config/git/hooks/no-draft-commits"
   ".config/lazygit/config.yml"
   ".config/yazi/yazi.toml"
+  ".config/yazi/keymap.toml"
+  ".config/yazi/plugins/escape-or-quit.yazi/main.lua"
   ".peco/config.json"
   ".gemrc"
   ".psqlrc"
