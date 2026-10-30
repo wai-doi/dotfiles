@@ -2,7 +2,8 @@
 	name = Yusuke Doi
 	email = yuusukedoi23@gmail.com
 [core]
-	commentChar = ";"
+	# Markdown の見出しを残しつつ、行頭 # をコメントとみなすエディタの git-commit 文法でハイライトさせる
+	commentChar = "#;"
 [init]
 	defaultBranch = main
 [commit]
