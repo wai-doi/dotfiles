@@ -17,6 +17,7 @@ dotfiles=(
   ".config/git/hooks/no-wip-branch"
   ".config/git/hooks/no-draft-commits"
   ".config/lazygit/config.yml"
+  ".config/micro/settings.json"
   ".config/yazi/yazi.toml"
   ".config/yazi/keymap.toml"
   ".config/yazi/plugins/escape-or-quit.yazi/main.lua"
