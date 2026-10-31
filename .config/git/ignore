@@ -1,3 +1,6 @@
+# macOS の Finder がフォルダの表示設定を保存するために生成するため
+.DS_Store
+
 # direnv
 .envrc
 
