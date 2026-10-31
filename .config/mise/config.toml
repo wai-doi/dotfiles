@@ -8,6 +8,7 @@ python = "latest"
 ruby = { version = "latest", postinstall = "gem install gem-src" }
 rust = "latest"
 
+"github:k1LoW/git-wt" = "latest"
 # 0.21.0 からライトモードの diff の背景色が薄くて見づらいため、その直前の版に固定する（https://github.com/tomasz-tomczyk/crit/pull/988）
 "github:tomasz-tomczyk/crit" = "0.20.3"
 "github:AlexanderGrooff/mermaid-ascii" = "latest"
