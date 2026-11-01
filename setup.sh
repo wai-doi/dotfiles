@@ -14,13 +14,12 @@ dotfiles=(
   ".config/ghostty/config"
   ".config/git/config"
   ".config/git/ignore"
-  ".config/git/hooks/no-wip-branch"
-  ".config/git/hooks/no-draft-commits"
+  ".config/git/hooks"
   ".config/lazygit/config.yml"
   ".config/micro/settings.json"
   ".config/yazi/yazi.toml"
   ".config/yazi/keymap.toml"
-  ".config/yazi/plugins/escape-or-quit.yazi/main.lua"
+  ".config/yazi/plugins"
   ".peco/config.json"
   ".gemrc"
   ".psqlrc"
@@ -32,8 +31,10 @@ dotfiles=(
   "iterm_settings/com.googlecode.iterm2.plist"
 )
 
-for file in "${dotfiles[@]}"; do
-  ln_with_mkdir "$file"
+for entry in "${dotfiles[@]}"; do
+  for file in $(find "$entry" -type f); do
+    ln_with_mkdir "$file"
+  done
 done
 
 # Create local zsh env file if missing (not tracked by git)
