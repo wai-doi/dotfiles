@@ -1,0 +1,84 @@
+/* GitHub の PR と同じフォントにする。GitHub が自前で配信する Mona Sans などは手元に無いため除く */
+:root {
+  --crit-font-body: -apple-system, "system-ui", "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  /* コードのフォント（--crit-font-code）はこれを参照し、設定画面の Code font で選ぶとそちらで上書きされる */
+  --crit-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --diffs-font-size: 12px;
+}
+
+/* ライトモードの diff とコメント欄を GitHub の PR と同じ色（Primer のトークンの値）にする */
+:root[data-crit-mode="light"] {
+  /* 背景色（白）にこの色を行は 12%、行番号の欄は 9% だけ混ぜて背景が作られるため、混ぜた結果が目標の色になるよう逆算して渡す */
+  --diffs-bg-addition-override: lab(from #dafbe1 calc((l - 88) / 0.12) calc(a / 0.12) calc(b / 0.12));
+  --diffs-bg-deletion-override: lab(from #ffebe9 calc((l - 88) / 0.12) calc(a / 0.12) calc(b / 0.12));
+  /* 白が 91% 残るため #aceebb・#ffcecb の暗さまでは届かず、色味だけ合う */
+  --diffs-bg-addition-number-override: lab(from #aceebb calc((l - 91) / 0.09) calc(a / 0.09) calc(b / 0.09));
+  --diffs-bg-deletion-number-override: lab(from #ffcecb calc((l - 91) / 0.09) calc(a / 0.09) calc(b / 0.09));
+  --diffs-bg-addition-emphasis-override: #aceebb;
+  --diffs-bg-deletion-emphasis-override: #ffcecb;
+  --diffs-fg-number-override: #59636e;
+
+  --crit-diff-add-bg: #dafbe1;
+  --crit-diff-add-line-bg: #dafbe1;
+  --crit-diff-del-bg: #ffebe9;
+  --crit-diff-del-line-bg: #ffebe9;
+  --crit-diff-word-add-bg: #aceebb;
+  --crit-diff-word-del-bg: #ffcecb;
+  /* コメントが付いた行は背景色ごと置き換えられ、diff の色を残したまま塗らないことはできないため、GitHub で行を選択したときの色にする */
+  --crit-comment-range-bg: #fff8c5;
+
+  /* crit が diff の shadow root の :host で指定していて、:root から継承させても負けるため、ホスト要素に直接指定する */
+  diffs-container {
+    --diffs-fg-number-addition-override: #1f2328;
+    --diffs-fg-number-deletion-override: #1f2328;
+    --diffs-bg-separator-override: #ddf4ff;
+  }
+
+  /* 画面全体で使われる変数のため、コメント欄の中でだけ差し替える */
+  .comment-card,
+  .comment-form {
+    --crit-editor-comment-bg: #ffffff;
+    --crit-border-comment: #d1d9e0;
+    --crit-border: #d1d9e0;
+    --crit-brand: #0969da;
+    --crit-brand-subtle: transparent;
+    --crit-editor-fg-muted: #59636e;
+    --crit-bg-elevated: #f6f8fa;
+    --crit-editor-bg-hover: #eff2f5;
+    --crit-fg-primary: #25292e;
+    --crit-brand-cta: #1f883d;
+    --crit-brand-cta-hover: #1c8139;
+    --crit-fg-on-brand: #ffffff;
+  }
+
+  .comment-header {
+    border-bottom: none;
+  }
+
+  .comment-author-badge {
+    padding: 0;
+    border: none;
+    background: none;
+    color: #1f2328;
+  }
+
+  .reply-input {
+    background: #ffffff;
+  }
+
+  .comment-form {
+    border-color: #d1d9e0;
+  }
+
+  /* GitHub は内側の影で線を足すが、内側の影は見出しや入力欄の背景に隠れ、外側の影は diff の端で切れるため、子要素より上に描かれる outline を枠線の内側に重ねる */
+  .comment-form:focus-within {
+    border-color: #0969da;
+    outline: 1px solid #0969da;
+    outline-offset: -2px;
+  }
+
+  .comment-form-header {
+    background: #f6f8fa;
+    color: #59636e;
+  }
+}

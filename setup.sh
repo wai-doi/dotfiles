@@ -20,6 +20,7 @@ dotfiles=(
   ".config/yazi/yazi.toml"
   ".config/yazi/keymap.toml"
   ".config/yazi/plugins"
+  ".crit/custom.css"
   ".peco/config.json"
   ".gemrc"
   ".psqlrc"
