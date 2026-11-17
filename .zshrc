@@ -160,7 +160,7 @@ function prl() {
 
 # PR一覧からブランチをチェックアウトする
 function cbpr() {
-    pr_num=$(gh pr list -s all "$@" | fzf | cut -f 1)
+    pr_num=$(GH_FORCE_TTY=100% gh pr list -s all "$@" | fzf --ansi --header-lines=4 --delimiter '  +' --nth ..-2 | awk '{print $1}')
 
     if [ -n "$pr_num" ]; then
         gh pr checkout $pr_num
