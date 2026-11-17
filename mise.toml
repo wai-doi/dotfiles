@@ -1,0 +1,26 @@
+[dotfiles]
+"~/.bundle/config" = ".bundle/config"
+"~/.config/mise/config.toml" = ".config/mise/config.toml"
+"~/.config/starship.toml" = ".config/starship.toml"
+"~/.config/cmux/cmux.json" = ".config/cmux/cmux.json"
+"~/.config/ghostty/config" = ".config/ghostty/config"
+"~/.config/git/config" = ".config/git/config"
+"~/.config/git/ignore" = ".config/git/ignore"
+"~/.config/git/hooks" = { source = ".config/git/hooks", mode = "symlink-each" }
+"~/.config/lazygit/config.yml" = ".config/lazygit/config.yml"
+"~/.config/micro/settings.json" = ".config/micro/settings.json"
+"~/.config/yazi/yazi.toml" = ".config/yazi/yazi.toml"
+"~/.config/yazi/keymap.toml" = ".config/yazi/keymap.toml"
+"~/.config/yazi/plugins" = { source = ".config/yazi/plugins", mode = "symlink-each" }
+"~/.crit/custom.css" = ".crit/custom.css"
+"~/.peco/config.json" = ".peco/config.json"
+"~/.gemrc" = ".gemrc"
+"~/.psqlrc" = ".psqlrc"
+"~/.irbrc" = ".irbrc"
+"~/.pryrc" = ".pryrc"
+"~/.tigrc" = ".tigrc"
+"~/.vimrc" = ".vimrc"
+"~/.zshrc" = ".zshrc"
+"~/iterm_settings/com.googlecode.iterm2.plist" = "iterm_settings/com.googlecode.iterm2.plist"
+# Local zsh env file (not tracked by git)
+"~/.zshrc.local" = { content = "", create_if_missing = true }

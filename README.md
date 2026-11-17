@@ -1,8 +1,9 @@
 # dotfiles
 ## Usage
-When you add new dotfiles in this repository, execute `./setup.sh` to create Symbolic links at your home directory.
+When you add new dotfiles in this repository, add them to `[dotfiles]` in `mise.toml` and run:
 ```
-% ./setup.sh
+% mise trust  # first time only
+% mise dot apply
 ```
 
 ### homebrew
